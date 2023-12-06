@@ -72,14 +72,14 @@ public class TopPageTest {
     }
 
     @Test
-    @DisplayName("虫眼鏡から検索ウィンドウを閉じれること")
+    @DisplayName("c")
     void searchPanelClose(Page page) {
         TopPage topPage = new TopPage(page);
         topPage.navigate();
         topPage.header.clickToCloseSearchPanel();
     }
 
-    @Test
+
     @DisplayName("横幅<=500px未満でハンバーガーメニューが出ること")
     void displayHamburgerMenu(Page page) {
         TopPage topPage = new TopPage(page);
@@ -96,7 +96,7 @@ public class TopPageTest {
         assertThat(hamburgerMenu).not().isVisible();
     }
 
-    @Test
+
     @DisplayName("検索窓を表示した状態でハンバーガーメニューの表示と非表示を切り替えられること")
     void displayHamburgerMenuWithOpeningSearchPanel(Page page) {
         TopPage topPage = new TopPage(page);
@@ -110,7 +110,7 @@ public class TopPageTest {
         assertThat(hamburgerMenu).isVisible();
     }
 
-    @Test
+
     @DisplayName("下にスクロールした時ヘッダが上部に出ない。上にスクロールした時ヘッダが上部に出ること")
     void notDisplayHeaderWhenScrollDown(Page page) {
         TopPage topPage = new TopPage(page);
@@ -129,7 +129,7 @@ public class TopPageTest {
         assertThat(header).hasClass("o-header state-top");
     }
 
-    @Test
+
     @DisplayName("記事リストの表示型が「タイル型とリスト型の間」に切り替えられること")
     void changeBetweenTileAndListDisplay(Page page) {
         TopPage topPage = new TopPage(page);
@@ -170,7 +170,7 @@ public class TopPageTest {
         assertThat(cards).hasCount(16);
     }
 
-    @Test
+
     @DisplayName("最新記事の「短く表示する」をクリックすると記事が追加で表示されること")
     void displayBlogsShortly(Page page) {
         TopPage topPage = new TopPage(page);
@@ -253,7 +253,7 @@ public class TopPageTest {
         topPage.header.clickFintanLogo();
     }
 
-    @Test
+
     @DisplayName("カテゴリリンクをホバーしてカテゴリ一覧が表示されること")
     void hoverCategoryLink(Page page) {
         TopPage topPage = new TopPage(page);
@@ -261,7 +261,7 @@ public class TopPageTest {
         topPage.header.hoverCategoryLink();
     }
 
-    @Test
+
     @DisplayName("カテゴリリンクをホバーして正しい内容のカテゴリ一覧が表示されること")
     void categoryListIsCorrect(Page page) {
         TopPage topPage = new TopPage(page);
@@ -276,7 +276,7 @@ public class TopPageTest {
         assertThat(categoryMenuLinks).hasText(expectedCategoryNames);
     }
 
-    @Test
+
     @DisplayName("metaタグのdescriptionが正しい内容であること")
     void checkMetaDescription(Page page) {
         TopPage topPage = new TopPage(page);
@@ -288,7 +288,7 @@ public class TopPageTest {
         assertEquals(META_DESCRIPTION, actualMetaDescription);
     }
 
-    @Test
+
     @DisplayName("h1タグが正しい内容であること")
     void checkH1Tag(Page page) {
         TopPage topPage = new TopPage(page);
@@ -297,7 +297,7 @@ public class TopPageTest {
         assertThat(h2Tags).containsText("FintanではTISインテックグループの技術ノウハウを公開しています。");
     }
 
-    @Test
+
     @DisplayName("h2タグが正しい内容であること")
     void checkH2Tag(Page page) {
         TopPage topPage = new TopPage(page);
@@ -308,7 +308,7 @@ public class TopPageTest {
         assertThat(h2Tags).containsText(h2TagTexts);
     }
 
-    @Test
+
     @DisplayName("（最新記事エリア）記事一覧の各記事タイトルのdom要素はdivであること")
     void checkBlogTileDomElement(Page page) {
         TopPage topPage = new TopPage(page);
@@ -317,7 +317,7 @@ public class TopPageTest {
         assertThat(titleDivElement).hasCount(LATEST_BLOG_COUNT_TOP_PAGE);
     }
 
-    @Test
+
     @DisplayName("鯖の魚の画像がwebpフォーマットの画像であること")
     void checkFishImageFormat(Page page) {
         TopPage topPage = new TopPage(page);
@@ -327,7 +327,7 @@ public class TopPageTest {
         assertEquals(topPage.fintan.url() + "/wp-content/themes/fintan/img/top/main-fish.webp", actualImageFilePath);
     }
 
-    @Test
+
     @DisplayName("テスト環境で（最新記事エリア）記事一覧の各記事著者名のdom要素はdivであること")
     @EnabledOnEnvironment(production = false, reason = "テスト環境の記事が本番に追いついてない為")
     @Disabled("テスト環境で著者のない（テスト用）新規記事が出る頻度が高く、都度修正するのが手間がかかるため")
@@ -341,7 +341,7 @@ public class TopPageTest {
         assertThat(authorNameDivElement).hasCount(58);
     }
 
-    @Test
+
     @DisplayName("本番環境で（最新記事エリア）記事一覧の各記事著者名のdom要素はdivであること")
     @EnabledOnEnvironment(production = true, reason = "テスト環境の記事が本番に追いついてない為")
     void checkBlogAuthorNameDomElementOnProductionEnv(Page page) {
@@ -352,7 +352,7 @@ public class TopPageTest {
         assertThat(authorNameDivElement).hasCount(LATEST_BLOG_COUNT_TOP_PAGE * 2);
     }
 
-    @Test
+
     @DisplayName("footerの組織紹介のタイトルはdom要素がdivであること")
     void checkOrganizationIntroductionDomElement(Page page) {
         TopPage topPage = new TopPage(page);

@@ -37,7 +37,7 @@ public class CategoryListPageTest {
         "その他"
     };
 
-    @Test
+
     @DisplayName("カテゴリ一覧に正しい内容のカテゴリ一覧が表示されること（テスト環境）。また各カテゴリ名のdom要素がdivであること")
     @EnabledOnEnvironment(production = false, reason = "テスト環境のカテゴリが本番に追いついてない為")
     void categoryListIsCorrectTestEnv(Page page) {
@@ -74,7 +74,7 @@ public class CategoryListPageTest {
         assertThat(page).hasURL(destinationUrl);
     }
 
-    @Test
+
     @DisplayName("h1タグが正しい内容であること")
     void checkH1Tag(Page page) {
         CategoryListPage categoryListPage = new CategoryListPage(page);

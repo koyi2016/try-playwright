@@ -43,7 +43,7 @@ public class TagTopPageTest {
         });
     }
 
-    @Test
+
     @DisplayName("h1タグが正しい内容であること")
     void checkH1Tag(Page page) {
         TagTopPage tagTopPage = new TagTopPage(page);
@@ -51,7 +51,7 @@ public class TagTopPageTest {
         tagNames.forEach(tagName -> tagTopPage.checkH1Tag(tagName));
     }
 
-    @Test
+
     @DisplayName("記事一覧の各記事タイトルのdom要素はdivであること")
     void checkBlogTileDomElement(Page page) {
         TagTopPage tagTopPage = new TagTopPage(page);

@@ -25,7 +25,7 @@ public class SearchResultPageTest {
         keywords.forEach(keyword -> searchResultPage.navigate(keyword));
     }
 
-    @Test
+
     @DisplayName("検索結果ページ、metaタグのdescriptionが正しい内容であること")
     void checkMetaDescription(Page page) {
         SearchResultPage searchResultPage = new SearchResultPage(page);

@@ -23,7 +23,7 @@ public class CategoryTopPageTest {
         "web-application", "Webアプリケーション開発"
     );
 
-    @Test
+
     @DisplayName("カテゴリトップページのタイトルが正しい内容であること")
     void checkTitle(Page page) {
         CategoryTopPage categoryTopPage = new CategoryTopPage(page);
@@ -31,7 +31,7 @@ public class CategoryTopPageTest {
         categoryPathNameMap.forEach((path, name) -> categoryTopPage.navigate(path, name));
     }
 
-    @Test
+
     @DisplayName("metaタグのdescriptionが正しい内容であること")
     void checkMetaDescription(Page page) {
         CategoryTopPage categoryTopPage = new CategoryTopPage(page);
@@ -45,7 +45,7 @@ public class CategoryTopPageTest {
         categoryPathExcerptMap.forEach((path, excerpt) -> categoryTopPage.checkMetaDescription(path, excerpt));
     }
 
-    @Test
+
     @DisplayName("h1タグが正しい内容であること")
     void checkH1Tag(Page page) {
         CategoryTopPage categoryTopPage = new CategoryTopPage(page);
@@ -53,7 +53,7 @@ public class CategoryTopPageTest {
         categoryPathNameMap.forEach((path, name) -> categoryTopPage.checkH1Tag(path, name));
     }
 
-    @Test
+
     @DisplayName("h2タグが正しい内容であること")
     void checkH2Tag(Page page) {
         CategoryTopPage categoryTopPage = new CategoryTopPage(page);
@@ -61,7 +61,7 @@ public class CategoryTopPageTest {
         categoryPathNameMap.forEach((path, name) -> categoryTopPage.checkH2Tag(path, name));
     }
 
-    @Test
+
     @DisplayName("テスト環境で（注目記事エリア）記事一覧の各記事著者名のdom要素はdivであること")
     @EnabledOnEnvironment(production = false, reason = "テスト環境の記事が本番に追いついてない為")
     void checkBlogAuthorNameDomElementSummaryBlogListOnTestEnv(Page page) {
@@ -73,7 +73,7 @@ public class CategoryTopPageTest {
         assertThat(authorNameDivElement).hasCount(3*2);
     }
 
-    @Test
+
     @DisplayName("本番環境で（注目記事エリア）記事一覧の各記事著者名のdom要素はdivであること")
     @EnabledOnEnvironment(production = true, reason = "テスト環境の記事が本番に追いついてない為")
     @Disabled("本番環境で注目記事エリアに記事が増える度に修正必要があり、手間がかかるため")

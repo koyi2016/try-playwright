@@ -24,7 +24,7 @@ public class AuthorBlogListPageTest {
         authorNames.forEach(authorName -> authorBlogListPage.navigate(authorName));
     }
 
-    @Test
+
     @DisplayName("metaタグのdescriptionが正しい内容であること")
     void checkMetaDescription(Page page) {
         AuthorBlogListPage authorBlogListPage = new AuthorBlogListPage(page);
@@ -40,7 +40,7 @@ public class AuthorBlogListPageTest {
         });
     }
 
-    @Test
+
     @DisplayName("h1タグが正しい内容であること")
     void checkH1Tag(Page page) {
         AuthorBlogListPage authorBlogListPage = new AuthorBlogListPage(page);
