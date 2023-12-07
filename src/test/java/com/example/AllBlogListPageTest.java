@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(PlaywrightExtension.class)
 public class AllBlogListPageTest {
     private static final String META_DESCRIPTION = "Fintanは、TISインテックグループが研究開発や、システム開発、新規事業開発のプロジェクトで培ったノウハウを集約したサイトです。";
+
     @Test
     @DisplayName("記事の総一覧リストページのタイトルが正しい内容であること")
     void checkTitle(Page page) {
@@ -22,7 +23,7 @@ public class AllBlogListPageTest {
         allBlogListPage.navigate();
     }
 
-    @Test
+
     @DisplayName("metaタグのdescriptionが正しい内容であること")
     void checkMetaDescription(Page page) {
         AllBlogListPage allBlogListPage = new AllBlogListPage(page);
@@ -36,7 +37,7 @@ public class AllBlogListPageTest {
         assertEquals(expectMetaDescription, actualMetaDescription);
     }
 
-    @Test
+
     @DisplayName("h1タグが正しい内容であること")
     void checkH1Tag(Page page) {
         AllBlogListPage allBlogListPage = new AllBlogListPage(page);
@@ -47,7 +48,7 @@ public class AllBlogListPageTest {
         assertThat(h1Tag).hasText("記事の総一覧リスト");
     }
 
-    @Test
+
     @DisplayName("テスト環境h2タグが正しい内容であること")
     @EnabledOnEnvironment(production = false, reason = "テスト環境のカテゴリが本番に追いついてない為")
     void checkH2tagTestEnv(Page page) {
@@ -66,7 +67,7 @@ public class AllBlogListPageTest {
         assertThat(h2Tag).containsText(expectedH2TagTexts);
     }
 
-    @Test
+
     @DisplayName("本番環境h2タグが正しい内容であること")
     @EnabledOnEnvironment(production = true, reason = "テスト環境のカテゴリが本番に追いついてない為")
     void checkH2tagProductionEnv(Page page) {

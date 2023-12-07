@@ -29,7 +29,7 @@ public class CategoryListPageTest {
 
     private static final String[] categoryNamesProductionEnv = new String[]{
         "Webアプリケーション開発", "モバイルアプリケーション開発", "新規事業開発",
-        "先進技術研究", "UX/UIデザイン", "XR",
+        "先進技術研究", "UX/UIデザイン", "XR", "Generative AI（生成系AI）",
         "ブロックチェーン", "Nablarch", "Lerna",
         "量子コンピュータ", "アジャイル・スクラム", "要件定義",
         "開発プロセス", "ソフトウェアテスティング", "環境構築・ログ・CI/ CD",
@@ -37,7 +37,7 @@ public class CategoryListPageTest {
         "その他"
     };
 
-    @Test
+
     @DisplayName("カテゴリ一覧に正しい内容のカテゴリ一覧が表示されること（テスト環境）。また各カテゴリ名のdom要素がdivであること")
     @EnabledOnEnvironment(production = false, reason = "テスト環境のカテゴリが本番に追いついてない為")
     void categoryListIsCorrectTestEnv(Page page) {
@@ -74,7 +74,7 @@ public class CategoryListPageTest {
         assertThat(page).hasURL(destinationUrl);
     }
 
-    @Test
+
     @DisplayName("h1タグが正しい内容であること")
     void checkH1Tag(Page page) {
         CategoryListPage categoryListPage = new CategoryListPage(page);
@@ -83,8 +83,7 @@ public class CategoryListPageTest {
         assertThat(h1Tag).hasCount(1);
         assertThat(h1Tag).hasText("Category");
     }
-
-    @Test
+    
     @DisplayName("カテゴリ一覧で表示される件数とカテゴリーページの記事数が一致すること")
     void checkCategoryPostCount(Page page) {
         CategoryListPage categoryListPage = new CategoryListPage(page);

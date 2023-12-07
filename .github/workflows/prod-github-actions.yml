@@ -1,7 +1,7 @@
 name: prod Playwright Tests
 on:
   schedule:
-    - cron: '30 23,7 * * *' # UTC 23:30と7:30に(JST 8:30と16:30)動く
+    - cron: '0 14 * * *' # UTC 14:00に(JST 23:00)動く
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest

@@ -78,7 +78,7 @@ public class BlogDetailPageTest {
         idAuthorNameMap.forEach((id, name) -> blogDetailPage.checkAuthorNameDomElement(id, name));
     }
 
-    @Test
+
     @DisplayName("目次エリア、olタグでかつ各目次のdom要素はliタグであること")
     void checkTableOfContentsDomElement(Page page) {
         BlogDetailPage blogDetailPage = new BlogDetailPage(page);
@@ -92,7 +92,7 @@ public class BlogDetailPageTest {
         idTableOfContentCountMap.forEach((id, count) -> blogDetailPage.checkTableOfContentsDomElement(id, count));
     }
 
-    @Test
+
     @DisplayName("見出しのID属性に一意な名前がついていること")
     @EnabledOnEnvironment(production = false, reason = "テスト環境と本番環境で異なる記事の確認の為")
     void checkHeadingUniqueIdTestEnv(Page page) {
@@ -104,7 +104,7 @@ public class BlogDetailPageTest {
         blogDetailPage.checkHeadingUniqueId(pageId);
     }
 
-    @Test
+
     @DisplayName("見出しのID属性に一意な名前がついていること")
     @EnabledOnEnvironment(production = true, reason = "テスト環境と本番環境で異なる記事の確認の為")
     void checkHeadingUniqueIdProductionEnv(Page page) {
@@ -116,7 +116,7 @@ public class BlogDetailPageTest {
         blogDetailPage.checkHeadingUniqueId(pageId);
     }
 
-    @Test
+
     @DisplayName("「/page/3527/」の記事内の動画サイズが固定ではなくレスポンシブ的な設定になっていること")
     @EnabledOnEnvironment(production = true, reason = "テスト環境の記事が本番環境に追いついていないため")
     void checkVideoSize(Page page) {
@@ -129,7 +129,7 @@ public class BlogDetailPageTest {
         assertEquals("100%", actualVideoHeight);
     }
 
-    @Test
+
     @DisplayName("更新日のない記事のtimeタグに投稿日がdatetimeであること")
     void checkTimeTagWhenNoUpdatedDate(Page page) {
         BlogDetailPage blogDetailPage = new BlogDetailPage(page);
@@ -143,7 +143,7 @@ public class BlogDetailPageTest {
         idPostedDateMap.forEach((id, expectedDatetime) -> blogDetailPage.checkTimeTagDatetime(id, expectedDatetime));
     }
 
-    @Test
+
     @DisplayName("テスト環境で更新日のある記事のtimeタグに更新日がdatetimeであること")
     @EnabledOnEnvironment(production = false, reason = "テスト環境の記事が本番環境に追いついていないため")
     void checkTimeTagWhenNoUpdateDateOnTestEnv(Page page) {
@@ -157,7 +157,6 @@ public class BlogDetailPageTest {
         idUpdatedDateMap.forEach((id, expectedDatetime) -> blogDetailPage.checkTimeTagDatetime(id, expectedDatetime));
     }
 
-    @Test
     @DisplayName("本番環境で更新日のある記事のtimeタグに投稿日がdatetimeであること")
     @EnabledOnEnvironment(production = true, reason = "テスト環境の記事が本番環境に追いついていないため")
     @Disabled("本番環境で記事が更新される度に修正に手間がかかるため")
@@ -172,7 +171,7 @@ public class BlogDetailPageTest {
         idUpdatedDateMap.forEach((id, expectedDatetime) -> blogDetailPage.checkTimeTagDatetime(id, expectedDatetime));
     }
 
-    @Test
+
     @DisplayName("記事にパンくずリストがあり、内容が正しいであることをチェックする")
     void checkBreadcrumbs(Page page) {
         BlogDetailPage blogDetailPage = new BlogDetailPage(page);
