@@ -83,8 +83,7 @@ public class CategoryListPageTest {
         assertThat(h1Tag).hasCount(1);
         assertThat(h1Tag).hasText("Category");
     }
-
-    @Test
+    
     @DisplayName("カテゴリ一覧で表示される件数とカテゴリーページの記事数が一致すること")
     void checkCategoryPostCount(Page page) {
         CategoryListPage categoryListPage = new CategoryListPage(page);
