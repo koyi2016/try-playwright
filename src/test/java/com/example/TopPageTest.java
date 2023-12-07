@@ -31,7 +31,7 @@ public class TopPageTest {
 
     private static final String[] categoryNamesProductionEnv = new String[]{
         "Webアプリケーション開発", "モバイルアプリケーション開発", "新規事業開発",
-        "先進技術研究", "UX/UIデザイン", "XR",
+        "先進技術研究", "UX/UIデザイン", "XR", "Generative AI（生成系AI）",
         "ブロックチェーン", "Nablarch", "Lerna",
         "量子コンピュータ", "アジャイル・スクラム", "要件定義",
         "開発プロセス", "ソフトウェアテスティング", "環境構築・ログ・CI/ CD",

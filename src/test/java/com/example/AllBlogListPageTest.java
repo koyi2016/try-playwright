@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AllBlogListPageTest {
     private static final String META_DESCRIPTION = "Fintanは、TISインテックグループが研究開発や、システム開発、新規事業開発のプロジェクトで培ったノウハウを集約したサイトです。";
 
+    @Test
     @DisplayName("記事の総一覧リストページのタイトルが正しい内容であること")
     void checkTitle(Page page) {
         AllBlogListPage allBlogListPage = new AllBlogListPage(page);
