@@ -64,6 +64,54 @@ public class TopPageTest {
     }
 
     @Test
+    @DisplayName("当サイトのご利用にあたってに遷移できること")
+    void clickTermsOfUseForThisSite (Page page) {
+        TopPage topPage = new TopPage(page);
+        topPage.navigate();
+        topPage.footer.clickTermsOfUseForThisSite();
+    }
+
+    @Test
+    @DisplayName("商標についてに遷移できること")
+    void clickAboutTrademarksLink  (Page page) {
+        TopPage topPage = new TopPage(page);
+        topPage.navigate();
+        topPage.footer.clickAboutTrademarksLink();
+    }
+
+    @Test
+    @DisplayName("ライセンスに遷移できること")
+    void clickLicenseLink (Page page) {
+        TopPage topPage = new TopPage(page);
+        topPage.navigate();
+        topPage.footer.clickLicenseLink();
+    }
+
+    @Test
+    @DisplayName("個人情報保護方針に遷移できること")
+    void clickPrivacyPolicyLink(Page page) {
+        TopPage topPage = new TopPage(page);
+        topPage.navigate();
+        topPage.footer.clickPrivacyPolicyLink();
+    }
+
+    @Test
+    @DisplayName("情報セキュリティ方針に遷移できること")
+    void clickInformationSecurityPolicyLink(Page page) {
+        TopPage topPage = new TopPage(page);
+        topPage.navigate();
+        topPage.footer.clickInformationSecurityPolicyLink();
+    }
+
+    @Test
+    @DisplayName("個人情報の取り扱いについてに遷移できること")
+    void clickHandlingOfPersonalInformation(Page page) {
+        TopPage topPage = new TopPage(page);
+        topPage.navigate();
+        topPage.footer.clickHandlingOfPersonalInformationLink();
+    }
+
+    @Test
     @DisplayName("虫眼鏡から検索ウィンドウを開けること")
     void searchPanelOpen(Page page) {
         TopPage topPage = new TopPage(page);
