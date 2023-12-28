@@ -10,6 +10,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: maven
+
       - name: Build & Install
         run: mvn -B install -D skipTests --no-transfer-progress
       - name: Install Playwright
@@ -21,3 +22,14 @@ jobs:
       - name: Run tests on webkit
         run: mvn -Dplaywright.browser-type=webkit test
 
+      # Slackに通知を送るステップを追加
+      - name: Notify Slack
+        if: always() # 成功、失敗に関わらず実行
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: private_test_notify # Slackのチャンネル名
+          SLACK_COLOR: ${{ job.status == 'failure' && 'danger' || 'good' }}
+          SLACK_MESSAGE: '${{ github.workflow }}: ${{ job.status }}'
+          SLACK_USERNAME: GitHub Actions
+          SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+          SLACK_WEBHOOK_URL: ${{ secrets.FINTAN_ACTION }} # GitHub Secretsに設定したSlackのWebhook URL
