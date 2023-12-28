@@ -32,4 +32,4 @@ jobs:
           SLACK_MESSAGE: '${{ github.workflow }}: ${{ job.status }}'
           SLACK_USERNAME: GitHub Actions
           SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-          SLACK_WEBHOOK_URL: ${{ secrets.FINTAN_ACTION }} # GitHub Secretsに設定したSlackのWebhook URL
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
