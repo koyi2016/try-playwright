@@ -1,5 +1,7 @@
 name: prod Playwright Tests for Fintan
-on: [push]
+on:
+  schedule:
+    - cron: '0 14 * * *' # UTC 14:00に(JST 23:00)動く
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
@@ -10,7 +12,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: maven
-
       - name: Build & Install
         run: mvn -B install -D skipTests --no-transfer-progress
       - name: Install Playwright
