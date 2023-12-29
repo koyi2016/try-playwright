@@ -1,4 +1,4 @@
-name: prod Playwright Tests
+name: prod Playwright Tests for Fintan
 on:
   schedule:
     - cron: '0 14 * * *' # UTC 14:00に(JST 23:00)動く
@@ -22,3 +22,15 @@ jobs:
         run: mvn -Dplaywright.browser-type=firefox test
       - name: Run tests on webkit
         run: mvn -Dplaywright.browser-type=webkit test
+
+      # Slackに通知を送るステップを追加
+      - name: Notify Slack
+        if: always() # 成功、失敗に関わらず実行
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: private_test_notify # Slackのチャンネル名
+          SLACK_COLOR: ${{ job.status == 'failure' && 'danger' || 'good' }}
+          SLACK_MESSAGE: '${{ github.workflow }}: ${{ job.status }}'
+          SLACK_USERNAME: GitHub Actions
+          SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
