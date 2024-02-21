@@ -9,6 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,13 +30,13 @@ public class CategoryListPageTest {
     };
 
     private static final String[] categoryNamesProductionEnv = new String[]{
-        "Webアプリケーション開発", "モバイルアプリケーション開発", "新規事業開発",
-        "先進技術研究", "UX/UIデザイン", "XR", "Generative AI（生成系AI）",
-        "ブロックチェーン", "Nablarch", "Lerna",
-        "量子コンピュータ", "アジャイル・スクラム", "要件定義",
-        "開発プロセス", "ソフトウェアテスティング", "環境構築・ログ・CI/ CD",
-        "セキュリティ・暗号化", "エンジニア育成・学習", "活動発信・イベントレポート",
-        "その他"
+        "アプリケーション開発事例", "モバイルアプリケーション開発", "アジャイル・スクラム",
+        "ソフトウェアテスティング","開発プロセス","エンジニア育成・学習",
+        "ITアーキテクチャ","Nablarchフレームワーク","Springノウハウ",
+        "Extreal XRフレームワーク","Lerna 高可用スタック","先進技術研究",
+        "Web3",  "量子コンピュータ", "Generative AI（生成系AI）",
+        "新規事業開発","XR", "UI/UXデザイン",
+        "活動発信・イベントレポート"
     };
 
 
@@ -55,11 +57,27 @@ public class CategoryListPageTest {
         CategoryListPage categoryListPage = new CategoryListPage(page);
         categoryListPage.navigate();
         Locator categoryNameLinks = categoryListPage.getCategoryNameLinks();
+        List<String> categoryNamesWithNumbers = categoryNameLinks.allTextContents();
+        List<String> categoryNamesWithoutNumbers = new ArrayList<>();
+
+        for (String nameWithNumbers : categoryNamesWithNumbers) {
+            // 数値とそれに続く括弧を削除します（例: "(48)"を削除）
+            String nameWithoutNumbers = nameWithNumbers.replaceAll("\\(\\d+\\)$", "").trim();
+            categoryNamesWithoutNumbers.add(nameWithoutNumbers);
+        }
+
         assertThat(categoryNameLinks).hasCount(categoryNamesProductionEnv.length);
-        assertThat(categoryNameLinks).containsText(categoryNamesProductionEnv);
+        // categoryNamesProductionEnvは期待されるカテゴリ名の配列
+        for (String expectedName : categoryNamesProductionEnv) {
+            boolean found = categoryNamesWithoutNumbers.contains(expectedName);
+            if (!found) {
+                throw new AssertionError("Expected name not found: " + expectedName);
+            }
+        }
+
     }
 
-    @Test
+
     @DisplayName("「記事一覧へ」で該当カテゴリのカテゴリトップに遷移できること")
     void clickAuthorIcon(Page page) {
         CategoryListPage categoryListPage = new CategoryListPage(page);

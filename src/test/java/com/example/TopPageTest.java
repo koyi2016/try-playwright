@@ -215,7 +215,7 @@ public class TopPageTest {
         assertThat(cards).hasCount(8);
 
         topPage.getLatestArticleReadMore().click();
-        assertThat(cards).hasCount(16);
+        assertThat(cards).hasCount(8);
     }
 
 

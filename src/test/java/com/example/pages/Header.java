@@ -63,7 +63,7 @@ public class Header {
      * ヘッダのカテゴリリンクからカテゴリ一覧ページに遷移する。
      */
     public void clickCategoryLink() {
-        page.locator("text=Category カテゴリ").click();
+        page.locator("a:has-text(\"Category カテゴリ\")").click();
         assertThat(page).hasURL(fintan.url("/blog-category/"));
     }
 
