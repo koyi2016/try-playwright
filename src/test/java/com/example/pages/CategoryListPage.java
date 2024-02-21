@@ -25,9 +25,15 @@ public class CategoryListPage extends PageTemplate {
         assertThat(page).hasTitle("記事カテゴリ | Fintan");
     }
 
+//    public Locator getCategoryNameLinks() {
+//        return page.locator("ul.c-blog-category-top-page__list > li > .c-blog-category__block > a:first-child ");
+//    }
+
     public Locator getCategoryNameLinks() {
-        return page.locator("ul.c-blog-category__list > li > .c-blog-category__block > a:first-child ");
+        return page.locator("main ul.c-blog-category-top-page_list > li > .c-blog-category-contents > .c-blog-category-content");
     }
+
+
 
     public Locator getBlogListLink() {
         return page.locator("ul.c-blog-category__list > li > .c-blog-category__block > a.link").first();
